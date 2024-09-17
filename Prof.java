@@ -1,6 +1,7 @@
 package Model;
 // import java.util.ArrayList;
 import java.util.List;
+import Model.*;
 
 public class Prof extends User
 {

@@ -1,6 +1,8 @@
 package Model;
 // import java.util.ArrayList;
 import java.util.List;
+import Model.*;
+
 
 public class Admin extends User {
     private DataManager dataManager;
@@ -80,6 +82,17 @@ public class Admin extends User {
         } else {
             for (Prof professor : professors) {
                 System.out.println("Professor Name: " + professor.getName() + ", Email: " + professor.getEmail() + ", Assigned Course: " + professor.getCourse().getCode());
+            }
+        }
+    }
+
+    public void viewAllCourses() {
+        List<Course> courses = dataManager.getAllCourses();
+        if(courses.isEmpty()) {
+            System.out.println("No courses found.");
+        } else {
+            for(Course course : courses) {
+                System.out.println("Course Name" + course.getTitle() + ", Code: " + course.getCode() + ", Credits" + course.getCredits());
             }
         }
     }

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import Model.*;
 
 public class DataManager {
     // Singleton instance
@@ -59,6 +60,10 @@ public class DataManager {
         } else if (user instanceof Prof) {
             professorData.put(email, (Prof) user);
         } else if (user instanceof Admin) {
+            System.out.println("Admin user registration |" + user.getEmail() + "|   |" + user.getPassword() + "|");
+            if(userCredentials.containsKey(user.getEmail())) {
+                System.out.println("WTF!!!");
+            }
             adminData.put(email, (Admin) user);
         }
 
@@ -67,6 +72,7 @@ public class DataManager {
 
     // Method for login
     public User login(String email, String password) {
+        System.out.println("Email is : " + email);
         if (!userCredentials.containsKey(email)) {
             System.out.println("Email not found. Please Sign Up.");
             return null;
@@ -106,6 +112,9 @@ public class DataManager {
         return null; // User not found
     }
 
+    public List<Course> getAllCourses() {
+        return courseList;
+    }
     // List all registered users by type
     public <T extends User> List<T> getAllUsers(Class<T> userType) {
         if (userType == Student.class) {
