@@ -92,18 +92,7 @@ public class Prof extends User
          }
      }
 
-//    public void updatePrerequisites(List<Course> prerequisites)
-//    {
-//        if (course != null)
-//        {
-//            this.course.setPrereq(prerequisites);
-//            System.out.println("Prerequisites updated for " + this.course.getCode());
-//        }
-//        else
-//        {
-//            System.out.println("No course assigned.");
-//        }
-//    }
+
 
     public void updateLimit(int limit)
     {

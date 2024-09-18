@@ -2,9 +2,8 @@ package Model;
 
 import Model.*;
 import java.util.ArrayList;
-// import java.util.HashMap;
+
 import java.util.List;
-// import java.util.Map;
 
 //implementation of ID
 //implementation of viewProfessor
@@ -14,7 +13,7 @@ public class Student extends User{ //Inheritance
     private int ID;
     private List<Course> completed;
     private List<Course> current;
-    // private List<Complaint> complaints;
+    public List<List<String>> complaints;
 
     public Student(String email, String password, String name, int ID){
         super(email, password, name);
@@ -22,9 +21,28 @@ public class Student extends User{ //Inheritance
         this.ID = ID;
         this.completed = new ArrayList<>();
         this.current = new ArrayList<>();
-        // this.complaints = new ArrayList<>();
+        this.complaints = new ArrayList<>();
+
+    }
+    public void addComplaint(String description) {
+        List<String> complaint = new ArrayList<>();
+        complaint.add(description);  // Add description
+        complaint.add("Pending");    // Add default status "Pending"
+        complaints.add(complaint);   // Add the complaint to the complaints list
+        System.out.println("Complaint Registered Successfully");
     }
 
+    // Method to view all complaints
+    public void viewComplaints() {
+        if (complaints.isEmpty()) {
+            System.out.println("No complaints available.");
+        } else {
+            for (int i = 0; i < complaints.size(); i++) {
+                List<String> complaint = complaints.get(i);
+                System.out.println("Complaint " + (i + 1) + ": " + complaint.get(0) + ", Status: " + complaint.get(1));
+            }
+        }
+    }
 
     public int getID()
     {
@@ -112,7 +130,7 @@ public class Student extends User{ //Inheritance
         // This method will calculate the SGPA of the student based on the completed courses of the last semester
         if (semester>=this.semester) 
         {
-            System.out.println("Grades not received for this semester yet.");
+            System.out.println("Grades not received .");
             return 0;
         }
         
@@ -145,7 +163,7 @@ public class Student extends User{ //Inheritance
                 System.out.printf("Credits: %d\n", course.getCredits());
                 System.out.printf("Max Enrolments: %d\n", course.getLimit());
                 System.out.println("Prerequisites: " + course.getPrereq());
-//                System.out.println("Weekly Schedule: " + course.getschedule());
+
             }
         }
     }
@@ -169,13 +187,7 @@ public class Student extends User{ //Inheritance
                     System.out.println(preq.getCode());
                 }
                 System.out.println();
-                    
-//                System.out.println("Weekly Schedule: ");
-//                for (Schedule schedule : course.getschedule())
-//                {
-//                    System.out.println(schedule);
-//                }
-//                System.out.println();
+
             }
         }
     }
@@ -201,12 +213,7 @@ public class Student extends User{ //Inheritance
                 }
                 System.out.println();
                     
-//                System.out.println("Weekly Schedule: ");
-//                for (Schedule schedule : course.getschedule())
-//                {
-//                    System.out.println(schedule);
-//                }
-//                System.out.println();
+
             }
         }
     }
@@ -216,7 +223,7 @@ public class Student extends User{ //Inheritance
         // This method will display the grades of the student for a specific semester
         if (semester>=this.semester) 
         {
-            System.out.println("Grades not received for this semester yet.");
+            System.out.println("Grades not received .");
             return;
         }
         for (Course course : this.completed)
@@ -251,10 +258,10 @@ public class Student extends User{ //Inheritance
     public void trackProgress(int semester)
     {
         // This method will display the progress of the student for a specific semester
-        if (semester>=this.semester) 
-        {
-            System.out.println("Grades not received for this semester yet.");
-        }
+//        if (semester>=this.semester)
+//        {
+//            System.out.println("Grades not received for this semester yet.");
+//        }
         viewGrades(semester);
         System.out.println("SGPA of Student " + this.getName() + " is " + this.Sgpa(semester));
     }
@@ -289,7 +296,11 @@ public class Student extends User{ //Inheritance
                 break;
             }
         }
-
+        if (course == null)
+        {
+            System.out.println("Wrong Course Code");
+            return;
+        }
         if(course.getSem()!=this.semester)
         {
             System.out.println("This Course is not available in this semester");
@@ -329,15 +340,6 @@ public class Student extends User{ //Inheritance
         this.completed.addAll(this.current);
         this.current.clear();
     }
-    
-    // public void submitComplaint(String desc, String date) {
-    //     // Your code here
-    //     Complaint complaint = new Complaint(desc, date);
-    //     complaint.setStudentName(this.getName());
-    //     complaint.setStudentEmail(this.getEmail());
-    //     complaint.setStudentID(this.getID());
-    //     this.complaints.add(complaint);
-    // }
 
     @Override
     public String toString() {

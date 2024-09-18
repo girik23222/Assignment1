@@ -105,7 +105,6 @@ public class Main {
         scanner.nextLine();
         System.out.print("Enter your email: ");
         String email = scanner.nextLine();
-        scanner.nextLine();
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
         System.out.print("Enter your name: ");
@@ -151,7 +150,9 @@ public class Main {
             System.out.println("5. View Schedule");
             System.out.println("6. View Completed Courses");
             System.out.println("7. View CGPA and SGPA");
-            System.out.println("8. Logout");
+            System.out.println("8. Register a Complaint");
+            System.out.println("9. View all Complaints");
+            System.out.println("10. Logout");
 
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
@@ -184,6 +185,15 @@ public class Main {
                     student.trackProgress();
                     break;
                 case 8:
+                    System.out.println("Enter the description for complaint: ");
+                    String desc = scanner.nextLine();
+                    student.addComplaint(desc);
+                    break;
+                case 9:
+                    System.out.println("All complaints: ");
+                    student.viewComplaints();
+                    break;
+                case 10:
                     System.out.println("Logging out...");
                     exit = true;
                     break;
@@ -246,7 +256,9 @@ public class Main {
             System.out.println("6. View all courses");
             System.out.println("7. Update Student Details");
             System.out.println("8. Delete Student Details");
-            System.out.println("9. Logout");
+            System.out.println("9. View Complaints");
+            System.out.println("10. Update Complaints");
+            System.out.println("11. Logout");
             
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
@@ -289,24 +301,6 @@ public class Main {
                     int studentRollNo = scanner.nextInt();
                     admin.registerStudent(studentEmail, studentPassword, studentName, studentRollNo);
                     break;
-//                case 4:
-//                    System.out.print("Enter professor Email: ");
-//                    String profEmail = scanner.nextLine();
-//                    System.out.print("Enter professor Password: ");
-//                    String profPassword = scanner.nextLine();
-//                    System.out.print("Enter professor name: ");
-//                    String profName = scanner.nextLine();
-//                    System.out.println("Enter Course Code: ");
-//                    courseCode = scanner.nextLine();
-//                    Course course = null;
-//                    for (Course c : dataManager.getCourseList()) {
-//                        if (c.getCode().equals(courseCode)) {
-//                            course = c;
-//                            break;
-//                        }
-//                    }
-//                    admin.registerProfessor(profEmail, profPassword, profName, course);
-//                    break;
                 case 4:
                     admin.viewAllStudents();
                     break;
@@ -322,8 +316,13 @@ public class Main {
                 case 8:
                     admin.deleteStudentDetails();
                     break;
-
                 case 9:
+                    admin.viewAllComplaints();
+                    break;
+                case 10:
+                    admin.updateComplaintStatus();
+                    break;
+                case 11:
                     System.out.println("Logging out...");
                     exit = true;
                     break;

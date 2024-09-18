@@ -11,7 +11,7 @@ public class Admin extends User {
     private DataManager dataManager;
     private List<Course> courseList;
     public Map<String, Student> studentList ;
-
+    public Scanner scaner = new Scanner(System.in);
     // Constructor
     public Admin(String email, String password, String name, DataManager dataManager) {
         super(email, password, name);
@@ -75,8 +75,62 @@ public class Admin extends User {
             }
         }
     }
+    public void viewAllComplaints(){
+        if (studentList.isEmpty()) {
+            System.out.println("No students found.");
+        } else {
+            for (Student student : studentList.values()) {
+                System.out.println( "Student with Roll No: " + student.getID());
+                for (int i = 0; i < student.complaints.size(); i++) {
+                    List<String> complaint = student.complaints.get(i);
+                    System.out.println("Complaint " + (i + 1) + ": " + complaint.get(0) + ", Status: " + complaint.get(1));
+                }
+                System.out.println();
+            }
+        }
+    }
+    public void updateComplaintStatus() {
+        if (studentList.isEmpty()) {
+            System.out.println("No students found.");
+        } else {
+            System.out.println("Enter the roll number: ");
+            int id = scaner.nextInt();
 
+            boolean studentFound = false;  // To track if the student is found or not
 
+            for (Student student : studentList.values()) {  // Assuming studentList is a Map or Collection
+                if (student.getID() == id) {
+                    studentFound = true;
+                    if (student.complaints.isEmpty()) {
+                        System.out.println("No complaints found for this student.");
+                    } else {
+                        // Display complaints with their index
+                        for (int i = 0; i < student.complaints.size(); i++) {
+                            List<String> complaint = student.complaints.get(i);
+                            System.out.println("Complaint " + (i + 1) + ": " + complaint.get(0) + ", Status: " + complaint.get(1));
+                        }
+
+                        // Ask for complaint number to update
+                        System.out.println("Enter the Complaint Number to resolve: ");
+                        int choice = scaner.nextInt();
+
+                        // Validate the user's choice
+                        if (choice > 0 && choice <= student.complaints.size()) {
+                            List<String> selectedComplaint = student.complaints.get(choice - 1);  // Get the chosen complaint
+                            selectedComplaint.set(1, "Resolved");  // Update the status to "Resolved"
+                            System.out.println("Complaint " + choice + " status updated to Resolved.");
+                        } else {
+                            System.out.println("Invalid complaint number.");
+                        }
+                    }
+                }
+            }
+
+            if (!studentFound) {
+                System.out.println("Student with the given roll number not found.");
+            }
+        }
+    }
     // Method to view all professors
     public void viewAllProfessors() {
         List<Prof> professors = dataManager.getAllUsers(Prof.class);
