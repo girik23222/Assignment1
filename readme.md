@@ -51,6 +51,35 @@ The UML diagram below illustrates the relationships between various components o
 
 ![UML Diagram](uml.png)
 
+## OOP Concepts Used
+
+In the development of this system, several Object-Oriented Programming (OOP) concepts have been employed to ensure a robust and maintainable design. Here’s how each concept is utilized:
+
+### Classes and Interfaces
+
+- Classes represent the core entities of the system. For example, `User`, `Student`, `Prof`, `Admin`, and `Course` are all classes that encapsulate the attributes and behaviors related to these entities.
+
+### Inheritance
+
+- **Inheritance** allows classes to inherit attributes and methods from other classes, promoting code reuse and hierarchical relationships. In this system:
+    - `Student`, `Prof`, and `Admin` classes inherit from the `User` class, gaining common properties and methods such as `email`, `password`, and `login()`.
+    - This enables a consistent interface for all user types while allowing specialized behavior for each user type.
+
+### Polymorphism
+
+- **Polymorphism** enables objects of different classes to be treated as objects of a common superclass. It allows methods to have different implementations based on the object’s type:
+    - Methods like `viewAvailableCourses()` and `assignGrade()` exhibit polymorphism. The method implementation varies depending on whether it’s called on a `Student`, `Prof`, or `Admin` object.
+
+### Encapsulation
+
+- **Encapsulation** is the practice of hiding the internal state and requiring all interaction to be performed through an object’s methods. It ensures that an object’s state cannot be directly accessed or modified from outside:
+    - Each class encapsulates its attributes and provides getter and setter methods to access or modify these attributes. For instance, the `Course` class uses private fields and public methods to manage course details securely.
+
+### Abstraction
+
+- **Abstraction** simplifies complex systems by modeling classes based on the essential properties and behaviors. It hides implementation details that are not relevant to the user:
+    - Abstract classes like `User` provide a blueprint for different types of users, focusing on the common functionality while allowing derived classes to implement specific details.
+
 ## File Structure
 
 - **`User.java`**: This is an abstract class defining common attributes and methods for all users in the system. It includes methods for getting and setting user details such as email, password, and name.
@@ -66,3 +95,11 @@ The UML diagram below illustrates the relationships between various components o
 - **`DataManager.java`**: A singleton class responsible for managing data related to users, courses, and authentication. It provides methods for signing up users, logging in, and managing course and user data.
 
 - **`Main.java`**: The entry point of the application. It provides the user interface for logging in, signing up, and accessing different functionalities based on user roles.
+
+## Getting Started
+
+To get started with the University Course Management System:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/university-course-management-system.git
