@@ -49,7 +49,7 @@ The University Course Management System is a comprehensive application designed 
 
 The UML diagram below illustrates the relationships between various components of the system, including inheritance, composition, dependency, and association.
 
-![UML Diagram](/uml.png)
+![UML Diagram](uml.png)
 
 ## File Structure
 
