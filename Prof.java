@@ -70,6 +70,12 @@ public class Prof extends User
     {
         if (course != null) 
         {
+            // credits should be 2 or 4
+            if (credits!= 2 || credits!= 4)
+            {
+                System.out.println("Wrong credits (Credits can be 2 or 4");
+                return;
+            }
             this.course.setCredits(credits);
             System.out.println("Course credits updated ");
         } 
@@ -108,20 +114,27 @@ public class Prof extends User
     }
 
     // View enrolled students
-    public void viewEnrolledStudents() 
-    {
-        if (course != null) 
-        {
-            System.out.println("Students enrolled in course  " + this.course.getCode() + ":");
-            for (Student student : this.course.getStudents()) {
-                System.out.println(student);
+    public void viewEnrolledStudents() {
+        if (course != null) {
+            System.out.println("Students enrolled in course " + this.course.getCode() + ":");
+            System.out.println();
+
+            // Get the list of students enrolled in the course
+            List<Student> students = this.course.getStudents();
+
+            if (students != null && !students.isEmpty()) {
+                for (Student student : students) {
+                    // Print student details, assuming there's a method to get the student name or ID
+                    System.out.println("ID: " + student.getID() + ", Name: " + student.getName());
+                }
+            } else {
+                System.out.println("No students are currently enrolled in this course.");
             }
-        }
-        else
-        {
+        } else {
             System.out.println("No course assigned.");
         }
     }
+
 
     //Method to view course details
     public void viewCourseDetails() 

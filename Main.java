@@ -226,6 +226,7 @@ public class Main {
                     updateCourseDetails(professor);
                     break;
                 case 3:
+
                     professor.viewEnrolledStudents();
                     break;
                 case 4:
