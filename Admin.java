@@ -110,10 +110,10 @@ public class Admin extends User {
             System.out.println("Enter Student Name:");
             String name = sc.nextLine();
             System.out.println("Enter Student Semseter:");
-            int semester = sc.nextInt();
+            int semeseter = sc.nextInt();
             studentToUpdate.setEmail(email);
             studentToUpdate.setName(name);
-            studentToUpdate.setSemester(semester);
+            studentToUpdate.setSemester(semeseter);
             System.out.println("Student details updated successfully.");
         } else {
             System.out.println("No student found with Roll No. " + rollNum);

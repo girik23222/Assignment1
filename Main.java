@@ -21,9 +21,9 @@ public class Main {
         Student student1 = new Student("s", "s", "Girik", 2024101);
         student1.setSemester(1);
         Student student2 = new Student("s1", "s1", "Girik2", 2024102);
-        student1.setSemester(2);
+        student2.setSemester(2);
         Student student3 = new Student("s2", "s2", "Girik3", 2024103);
-        student1.setSemester(2);
+        student3.setSemester(2);
         dataManager.signUp(student1);
         dataManager.signUp(student2);
         dataManager.signUp(student3);
@@ -74,7 +74,6 @@ public class Main {
 
         System.out.print("Enter password: ");
         String password = scanner1.nextLine();
-        System.out.println("Email line 63 : " + email);
 
         User user = dataManager.login(email, password);
         // scanner1.close();

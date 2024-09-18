@@ -145,7 +145,7 @@ public class Student extends User{ //Inheritance
                 System.out.printf("Credits: %d\n", course.getCredits());
                 System.out.printf("Max Enrolments: %d\n", course.getLimit());
                 System.out.println("Prerequisites: " + course.getPrereq());
-                System.out.println("Weekly Schedule: " + course.getschedule());
+//                System.out.println("Weekly Schedule: " + course.getschedule());
             }
         }
     }
@@ -283,19 +283,13 @@ public class Student extends User{ //Inheritance
         }
         // Create a new course object
         Course course = null;
-        boolean found = false;
         for (Course c : courseList) {
             if (c.getCode().equals(code)) {
                 course = c;
-                found = true;
                 break;
             }
         }
-        if (!found)
-        {
-            System.out.println("Wrong code printed ");
-            return;
-        }
+
         if(course.getSem()!=this.semester)
         {
             System.out.println("This Course is not available in this semester");

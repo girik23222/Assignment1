@@ -68,7 +68,6 @@ public class DataManager {
 
     // Method for login
     public User login(String email, String password) {
-        System.out.println("Email is : " + email);
         if (!userCredentials.containsKey(email)) {
             System.out.println("Email not found. Please Sign Up.");
             return null;
