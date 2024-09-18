@@ -92,6 +92,7 @@ public class Student extends User{ //Inheritance
         return credits;
     }
 
+
     public double Cgpa()
     {
         // This method will calculate the CGPA of the student based on the completed courses
@@ -171,12 +172,12 @@ public class Student extends User{ //Inheritance
                 }
                 System.out.println();
                     
-                System.out.println("Weekly Schedule: ");
-                for (Schedule schedule : course.getschedule())
-                {
-                    System.out.println(schedule);
-                }
-                System.out.println();
+//                System.out.println("Weekly Schedule: ");
+//                for (Schedule schedule : course.getschedule())
+//                {
+//                    System.out.println(schedule);
+//                }
+//                System.out.println();
             }
         }
     }
@@ -201,12 +202,12 @@ public class Student extends User{ //Inheritance
                 }
                 System.out.println();
                     
-                System.out.println("Weekly Schedule: ");
-                for (Schedule schedule : course.getschedule())
-                {
-                    System.out.println(schedule);
-                }
-                System.out.println();
+//                System.out.println("Weekly Schedule: ");
+//                for (Schedule schedule : course.getschedule())
+//                {
+//                    System.out.println(schedule);
+//                }
+//                System.out.println();
             }
         }
     }

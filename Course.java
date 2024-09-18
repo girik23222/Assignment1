@@ -17,8 +17,8 @@ public class Course {
     private List<Schedule> schedule;
     private Map<Student, Integer> studentGrades;  // Mapping between student and their grade
     private int limit;
-    // private int startTime;
-    // private int endTime;
+     private int startTime;
+     private int endTime;
 
     // Constructor
     public Course(String title, String code, String prof, int sem, int credits, List<Course> prereq) {
@@ -96,24 +96,24 @@ public class Course {
         this.schedule = schedule;
     }
 
-    // public int getStartTime() {
-    //     return startTime;
-    // }
+     public int getStartTime() {
+         return startTime;
+     }
 
-    // public void setStartTime(int startTime) {
-    //     this.startTime = startTime;
-    // }
+     public void setStartTime(int startTime) {
+         this.startTime = startTime;
+     }
 
-    // public int getEndTime() {
-    //     return endTime;
-    // }
+     public int getEndTime() {
+         return endTime;
+     }
 
-    // public void setEndTime(int endTime) {
-    //     if(endTime>startTime)
-    //     {
-    //         this.endTime = endTime;
-    //     }
-    // }
+     public void setEndTime(int endTime) {
+         if(endTime>startTime)
+         {
+             this.endTime = endTime;
+         }
+     }
 
     public void setLimit(int limit) {
         this.limit = limit;

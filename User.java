@@ -18,7 +18,14 @@ public abstract class User {
     public String getEmail() { //Encapsulation
         return email;
     }
-
+    public String setEmail(String email) { //Encapsulation
+        this.email = email;
+        return email;
+    }
+    public String setName(String name) { //Encapsulation
+        this.name = name;
+        return name;
+    }
     public String getPassword() {
         return password;
     }

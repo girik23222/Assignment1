@@ -15,10 +15,10 @@ public class Main {
         boolean start = true;
 
         // Seed some initial data if required (this can be modified as per need)
-        Admin admin = new Admin("admin@university.edu", "adminpass", "Admin", dataManager);
+        Admin admin = new Admin("a", "a", "Admin", dataManager);
         dataManager.signUp(admin);
 
-        Student student1 = new Student("student1@university.edu", "password1", "Girik", 2024101);
+        Student student1 = new Student("s", "s", "Girik", 2024101);
         Student student2 = new Student("student2@university.edu", "password2", "Girik2", 2024102);
         Student student3 = new Student("student3@university.edu", "password3", "Girik3", 2024103);
         dataManager.signUp(student1);
@@ -28,7 +28,7 @@ public class Main {
         Course course1 = new Course("Math 101", "M101", "Aman", 1, 4, null);
         dataManager.addCourse(course1);
 
-        Prof professor1 = new Prof("aman1@university.edu", "profpass", "Aman", course1);
+        Prof professor1 = new Prof("p", "p", "Aman", course1);
         dataManager.signUp(professor1);
         dataManager.signUp(professor1);
 
@@ -163,13 +163,7 @@ public class Main {
                 case 4:
                     student.viewGrades();
                     break;
-                // case 5:
-                // System.out.print("Enter complaint description: ");
-                // String description = scanner.nextLine();
-                // System.out.println("Enter date of complaint: ");
-                // String date = scanner.nextLine();
-                // // student.submitComplaint(description, date);
-                // break;
+
                 case 6:
                     System.out.println("Logging out...");
                     exit = true;
@@ -190,8 +184,7 @@ public class Main {
             System.out.println("2. Update course details");
             System.out.println("3. View enrolled students");
             System.out.println("4. Set grades for students");
-            // System.out.println("5. Add an office hour");
-            System.out.println("6. Logout");
+            System.out.println("5. Logout");
 
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
@@ -209,18 +202,8 @@ public class Main {
                 case 4:
                     assignGrade(professor);
                     break;
-                // case 5:
-                // System.out.println("Enter day: ");
-                // String day = scanner.nextLine();
-                // System.out.println("Enter Start Time: ");
-                // int startTime = scanner.nextInt();
-                // System.out.println("Enter End Time: ");
-                // int endTime = scanner.nextInt();
-                // System.out.println("Enter the location: ");
-                // String location = scanner.nextLine();
-                // // Schedule schedule = new Schedule(day, startTime, endTime, location);
-                // break;
-                case 6:
+
+                case 5:
                     System.out.println("Logging out...");
                     exit = true;
                     break;
@@ -239,12 +222,13 @@ public class Main {
             System.out.println("1. Add a new course");
             System.out.println("2. Remove a course");
             System.out.println("3. Register a new student");
-            System.out.println("4. Register a new professor");
-            System.out.println("5. View all students");
-            System.out.println("6. View all professors");
-            System.out.println("7. View all courses");
-            
-            System.out.println("8. Logout");
+//            System.out.println("4. Register a new professor");
+            System.out.println("4. View all students");
+            System.out.println("5. View all professors");
+            System.out.println("6. View all courses");
+            System.out.println("7. Update Student Details");
+            System.out.println("8. Delete Student Details");
+            System.out.println("9. Logout");
             
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
@@ -282,34 +266,41 @@ public class Main {
                     int studentRollNo = scanner.nextInt();
                     admin.registerStudent(studentEmail, studentPassword, studentName, studentRollNo);
                     break;
+//                case 4:
+//                    System.out.print("Enter professor Email: ");
+//                    String profEmail = scanner.nextLine();
+//                    System.out.print("Enter professor Password: ");
+//                    String profPassword = scanner.nextLine();
+//                    System.out.print("Enter professor name: ");
+//                    String profName = scanner.nextLine();
+//                    System.out.println("Enter Course Code: ");
+//                    courseCode = scanner.nextLine();
+//                    Course course = null;
+//                    for (Course c : dataManager.getCourseList()) {
+//                        if (c.getCode().equals(courseCode)) {
+//                            course = c;
+//                            break;
+//                        }
+//                    }
+//                    admin.registerProfessor(profEmail, profPassword, profName, course);
+//                    break;
                 case 4:
-                    System.out.print("Enter professor Email: ");
-                    String profEmail = scanner.nextLine();
-                    System.out.print("Enter professor Password: ");
-                    String profPassword = scanner.nextLine();
-                    System.out.print("Enter professor name: ");
-                    String profName = scanner.nextLine();
-                    System.out.println("Enter Course Code: ");
-                    courseCode = scanner.nextLine();
-                    Course course = null;
-                    for (Course c : dataManager.getCourseList()) {
-                        if (c.getCode().equals(courseCode)) {
-                            course = c;
-                            break;
-                        }
-                    }
-                    admin.registerProfessor(profEmail, profPassword, profName, course);
-                    break;
-                case 5:
                     admin.viewAllStudents();
                     break;
-                case 6:
+                case 5:
                     admin.viewAllProfessors();
                     break;
-                case 7:
+                case 6:
                     admin.viewAllCourses();
                     break;
+                    case 7:
+                        admin.updateStudentDetails();
+                        break;
                 case 8:
+                    admin.deleteStudentDetails();
+                    break;
+
+                case 9:
                     System.out.println("Logging out...");
                     exit = true;
                     break;
@@ -324,6 +315,9 @@ public class Main {
         System.out.print("Enter new course credits: ");
         int credits = scanner.nextInt();
         professor.updateCredits(credits);
+        System.out.println("Enter the course limits: ");
+        int limit  = scanner.nextInt();
+        professor.updateLimit(limit);
     }
 
     private static void assignGrade(Prof professor) {

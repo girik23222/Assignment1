@@ -79,32 +79,32 @@ public class Prof extends User
         }
     }
 
-    // public void updateTimings(int startTime, int endTime) 
-    // {
-    //     if (course != null) 
-    //     {
-    //         this.course.setStartTime(startTime);
-    //         this.course.setEndTime(endTime);
-    //         System.out.println("Timings updated for " + this.course.getCode());
-    //     }
-    //     else
-    //     {
-    //         System.out.println("No course assigned.");
-    //     }
-    // }
+     public void updateTimings(int startTime, int endTime)
+     {
+         if (course != null)
+         {
+             this.course.setStartTime(startTime);
+             this.course.setEndTime(endTime);
+             System.out.println("Timings updated for " + this.course.getCode());
+         }
+         else
+         {
+             System.out.println("No course assigned.");
+         }
+     }
 
-    public void updatePrerequisites(List<Course> prerequisites) 
-    {
-        if (course != null) 
-        {
-            this.course.setPrereq(prerequisites);
-            System.out.println("Prerequisites updated for " + this.course.getCode());
-        }
-        else
-        {
-            System.out.println("No course assigned.");
-        }
-    }
+//    public void updatePrerequisites(List<Course> prerequisites)
+//    {
+//        if (course != null)
+//        {
+//            this.course.setPrereq(prerequisites);
+//            System.out.println("Prerequisites updated for " + this.course.getCode());
+//        }
+//        else
+//        {
+//            System.out.println("No course assigned.");
+//        }
+//    }
 
     public void updateLimit(int limit)
     {
@@ -144,6 +144,7 @@ public class Prof extends User
             System.out.println("Course Title: " + course.getTitle());
             System.out.printf("Course Credits: %d\n", course.getCredits());
             System.out.println("Prerequisites: " + course.getPrereq());
+            System.out.println("Course Max enrollment : "+course.getLimit());
         } 
         else 
         {

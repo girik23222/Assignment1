@@ -61,9 +61,6 @@ public class DataManager {
             professorData.put(email, (Prof) user);
         } else if (user instanceof Admin) {
             System.out.println("Admin user registration |" + user.getEmail() + "|   |" + user.getPassword() + "|");
-            if(userCredentials.containsKey(user.getEmail())) {
-                System.out.println("WTF!!!");
-            }
             adminData.put(email, (Admin) user);
         }
 
@@ -114,6 +111,9 @@ public class DataManager {
 
     public List<Course> getAllCourses() {
         return courseList;
+    }
+    public Map<String,Student> getAllStudent() {
+        return studentData;
     }
     // List all registered users by type
     public <T extends User> List<T> getAllUsers(Class<T> userType) {
