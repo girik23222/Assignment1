@@ -21,7 +21,7 @@ public class Admin extends User {
     }
 
     // Method to add a new course
-    public void addCourse(String title, String code, String prof, int semester, int credits, List<Course> prereq) 
+    public void addCourse(String title, String code, String prof, int semester, int credits, List<Course> prereq,String timings,String location)
     {
         for (Course c : courseList) 
         {
@@ -35,7 +35,7 @@ public class Admin extends User {
                 return;
             }
         }
-        Course course = new Course(title, code, prof, semester, credits, prereq);
+        Course course = new Course(title, code, prof, semester, credits, prereq,timings,location);
         dataManager.addCourse(course);
         System.out.println("Course " + title + " added successfully.");
     }
@@ -63,13 +63,6 @@ public class Admin extends User {
         dataManager.signUp(student);
         System.out.println("Student registered successfully.");
     }
-
-//    // Method to register a new professor
-//    public void registerProfessor(String email, String password, String name, Course course) {
-//        Prof professor = new Prof(email, password, name, course);
-//        dataManager.signUp(professor);
-//        System.out.println("Professor registered successfully.");
-//    }
 
     // Method to view all students
     public void viewAllStudents() {
@@ -116,9 +109,11 @@ public class Admin extends User {
             String email = sc.nextLine();
             System.out.println("Enter Student Name:");
             String name = sc.nextLine();
-
+            System.out.println("Enter Student Semseter:");
+            int semester = sc.nextInt();
             studentToUpdate.setEmail(email);
             studentToUpdate.setName(name);
+            studentToUpdate.setSemester(semester);
             System.out.println("Student details updated successfully.");
         } else {
             System.out.println("No student found with Roll No. " + rollNum);
@@ -134,7 +129,7 @@ public class Admin extends User {
         Student studentToRemove = null;
 
         // Loop through the list of students to find the student with the matching roll number
-        for (Student student : studentList.values()) { // assuming studentList is a Map<String, Student>
+        for (Student student : studentList.values()) {
             if (student.getID() == rollNum) {
                 studentToRemove = student;
                 break;

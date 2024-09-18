@@ -104,8 +104,7 @@ public class Student extends User{ //Inheritance
             return 0;
         }
 
-        double cgpa = totalGrades/totalCredits;
-        return cgpa;
+        return totalGrades/totalCredits;
     }
 
     public double Sgpa(int semester)
@@ -119,12 +118,11 @@ public class Student extends User{ //Inheritance
         
         double totalGrades = this.getGrades(semester);
         int   totalCredits = this.getCredits(semester);
-        
-        double sgpa = totalGrades/totalCredits;
-        return sgpa;
+
+        return totalGrades/totalCredits;
     }
 
-    public void viewcompleted() 
+    public void viewcompleted()
     {
         // This method will display the completed courses of the student with grade
         for (Course course : this.completed)
@@ -186,6 +184,7 @@ public class Student extends User{ //Inheritance
     {
         // This method will display the details of a particular course
         List<Course> courseList = DataManager.getInstance().getCourseList();
+
         for (Course course : courseList)
         {
             if (course.getCode().equals(courseCode))
@@ -195,7 +194,7 @@ public class Student extends User{ //Inheritance
                 System.out.println("Professor Name: "+ course.getprof());
                 System.out.printf("Credits: %d\n", course.getCredits());
                 System.out.printf("Max Enrolments: %d\n", course.getLimit());
-                System.out.println("Prerequisites: ");
+//                System.out.println("Prerequisites: ");
                 for (Course preq : course.getPrereq())
                 {
                     System.out.println(preq.getCode());
@@ -242,10 +241,9 @@ public class Student extends User{ //Inheritance
         // This method displays the schedule of the courses the student is taking
         for (Course course: this.current){
             System.out.println("Weekly Schedule: ");
-            for (Schedule schedule : course.getschedule())
-            {
-                System.out.println(schedule);
-            }
+            System.out.println("Course Code :" + course.getCode());
+            System.out.println("Course Location : " + course.getLocation());
+            System.out.println("Course Timings " + course.getTimings());
             System.out.println();
         }
     }
@@ -285,13 +283,19 @@ public class Student extends User{ //Inheritance
         }
         // Create a new course object
         Course course = null;
+        boolean found = false;
         for (Course c : courseList) {
             if (c.getCode().equals(code)) {
                 course = c;
+                found = true;
                 break;
             }
         }
-        
+        if (!found)
+        {
+            System.out.println("Wrong code printed ");
+            return;
+        }
         if(course.getSem()!=this.semester)
         {
             System.out.println("This Course is not available in this semester");

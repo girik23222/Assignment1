@@ -14,14 +14,16 @@ public class Course {
     private int credits;
     private List<Course> prereq;  // List of prerequisite courses
     private List<Student> enrolled;
-    private List<Schedule> schedule;
+//    private List<Schedule> schedule;
     private Map<Student, Integer> studentGrades;  // Mapping between student and their grade
     private int limit;
-     private int startTime;
-     private int endTime;
+    private String location;
+    private String timings;
+//     private int startTime;
+//     private int endTime;
 
     // Constructor
-    public Course(String title, String code, String prof, int sem, int credits, List<Course> prereq) {
+    public Course(String title, String code, String prof, int sem, int credits, List<Course> prereq,String timings,String location) {
         this.title = title;
         this.code = code;
         this.prof = prof;
@@ -29,8 +31,9 @@ public class Course {
         this.credits = credits;
         this.prereq = prereq != null ? prereq : new ArrayList<>();
         this.enrolled = new ArrayList<>();
-        this.schedule = new ArrayList<>();
+        this.location  = location ;
         this.studentGrades = new HashMap<>();
+        this.timings = timings;
         this.limit = 60; // Default maximum enrollments, can be updated later
         // this.startTime = 0000; // Default start time, can be updated later
         // this.endTime = 0001; // Default end time, can be updated later
@@ -44,7 +47,14 @@ public class Course {
     public String getCode() {
         return code;
     }
-
+    public String getLocation(){return this.location;}
+    public void setLocation(String location){
+        this.location = location;
+    }
+    public String getTimings(){return this.timings;}
+    public void setTimings(String timings){
+        this.timings = timings;
+    }
     public String getprof() {
         return prof;
     }
@@ -88,32 +98,15 @@ public class Course {
         enrolled.remove(student);
     }
 
-    public List<Schedule> getschedule() {
-        return schedule;
-    }
+//    public List<Schedule> getschedule() {
+//        return schedule;
+//    }
+//
+//    public void setschedule(List<Schedule> schedule) {
+//        this.schedule = schedule;
+//    }
 
-    public void setschedule(List<Schedule> schedule) {
-        this.schedule = schedule;
-    }
 
-     public int getStartTime() {
-         return startTime;
-     }
-
-     public void setStartTime(int startTime) {
-         this.startTime = startTime;
-     }
-
-     public int getEndTime() {
-         return endTime;
-     }
-
-     public void setEndTime(int endTime) {
-         if(endTime>startTime)
-         {
-             this.endTime = endTime;
-         }
-     }
 
     public void setLimit(int limit) {
         this.limit = limit;

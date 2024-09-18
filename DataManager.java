@@ -60,7 +60,6 @@ public class DataManager {
         } else if (user instanceof Prof) {
             professorData.put(email, (Prof) user);
         } else if (user instanceof Admin) {
-            System.out.println("Admin user registration |" + user.getEmail() + "|   |" + user.getPassword() + "|");
             adminData.put(email, (Admin) user);
         }
 
@@ -86,16 +85,6 @@ public class DataManager {
         return loggedInUser;
     }
 
-    // Password recovery (dummy implementation)
-    public void forgotPassword(String email) {
-        if (!userCredentials.containsKey(email)) {
-            System.out.println("Email not found.");
-            return;
-        }
-
-        // In a real system, we would send a password reset link
-        System.out.println("Password reset instructions sent to " + email);
-    }
 
     // General method to retrieve a user by email
     public User getUserByEmail(String email) {

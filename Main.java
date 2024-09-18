@@ -19,18 +19,28 @@ public class Main {
         dataManager.signUp(admin);
 
         Student student1 = new Student("s", "s", "Girik", 2024101);
-        Student student2 = new Student("student2@university.edu", "password2", "Girik2", 2024102);
-        Student student3 = new Student("student3@university.edu", "password3", "Girik3", 2024103);
+        student1.setSemester(1);
+        Student student2 = new Student("s1", "s1", "Girik2", 2024102);
+        student1.setSemester(2);
+        Student student3 = new Student("s2", "s2", "Girik3", 2024103);
+        student1.setSemester(2);
         dataManager.signUp(student1);
         dataManager.signUp(student2);
         dataManager.signUp(student3);
 
-        Course course1 = new Course("Math 101", "M101", "Aman", 1, 4, null);
-        dataManager.addCourse(course1);
+        Course course1 = new Course("Math 101", "M101", "Aman", 1, 4, null,"4-5","RND");
+        Course course2 = new Course("SNS", "ECE250", "Ram", 2, 4, null,"5-6","C01");
+        Course course3 = new Course("AP", "CSE250", "Shyam", 2, 4, null,"12-2","LHC101");
+        admin.addCourse("Math 101", "M101", "Aman", 1, 4, null,"4-5","RND");
+        admin.addCourse("SNS", "ECE250", "Ram", 2, 4, null,"5-6","C01");
+        admin.addCourse("AP", "CSE250", "Shyam", 2, 4, null,"12-2","LHC101");
 
         Prof professor1 = new Prof("p", "p", "Aman", course1);
+        Prof professor2 = new Prof("r", "r", "Ram", course2);
+        Prof professor3 = new Prof("q", "q", "Shyam", course3);
         dataManager.signUp(professor1);
-        dataManager.signUp(professor1);
+        dataManager.signUp(professor2);
+        dataManager.signUp(professor3);
 
         while (start) {
             System.out.println("===== Welcome to ERP =====");
@@ -39,7 +49,6 @@ public class Main {
             System.out.println("3. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
-            // scanner.nextLine();
             switch (choice) {
                 case 1:
                     loginUser();
@@ -140,8 +149,10 @@ public class Main {
             System.out.println("2. Register for a course");
             System.out.println("3. Drop a course");
             System.out.println("4. View grades");
-            // System.out.println("5. Submit a complaint");
-            System.out.println("6. Logout");
+            System.out.println("5. View Schedule");
+            System.out.println("6. View Completed Courses");
+            System.out.println("7. View CGPA and SGPA");
+            System.out.println("8. Logout");
 
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
@@ -163,8 +174,17 @@ public class Main {
                 case 4:
                     student.viewGrades();
                     break;
-
+                case 5:
+                    student.viewSchedule();
+                    break;
                 case 6:
+                    student.viewcompleted();
+                    break;
+                case 7:
+                    student.trackProgress(student.getSemester());
+                    student.trackProgress();
+                    break;
+                case 8:
                     System.out.println("Logging out...");
                     exit = true;
                     break;
@@ -222,7 +242,6 @@ public class Main {
             System.out.println("1. Add a new course");
             System.out.println("2. Remove a course");
             System.out.println("3. Register a new student");
-//            System.out.println("4. Register a new professor");
             System.out.println("4. View all students");
             System.out.println("5. View all professors");
             System.out.println("6. View all courses");
@@ -246,7 +265,12 @@ public class Main {
                     int semester = scanner.nextInt();
                     System.out.println("Enter Credits: ");
                     int credits = scanner.nextInt();
-                    admin.addCourse(courseTitle, courseCode, professorName, semester, credits, null);
+                    scanner.nextLine();
+                    System.out.println("Enter timings: ");
+                    String timings = scanner.nextLine();
+                    System.out.println("Enter location : ");
+                    String  location = scanner.nextLine();
+                    admin.addCourse(courseTitle, courseCode, professorName, semester, credits, null,timings,location);
                     break;
                 case 2:
                     System.out.print("Enter course code to remove: ");
@@ -318,6 +342,11 @@ public class Main {
         System.out.println("Enter the course limits: ");
         int limit  = scanner.nextInt();
         professor.updateLimit(limit);
+        System.out.print("Enter new course Timings: ");
+        Scanner scanner1 = new Scanner(System.in);
+         String timings = scanner1.nextLine();
+         professor.updateTimings(timings);
+
     }
 
     private static void assignGrade(Prof professor) {

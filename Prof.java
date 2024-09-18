@@ -79,12 +79,11 @@ public class Prof extends User
         }
     }
 
-     public void updateTimings(int startTime, int endTime)
+     public void updateTimings(String timings)
      {
          if (course != null)
          {
-             this.course.setStartTime(startTime);
-             this.course.setEndTime(endTime);
+             this.course.setTimings(timings);
              System.out.println("Timings updated for " + this.course.getCode());
          }
          else
@@ -145,6 +144,7 @@ public class Prof extends User
             System.out.printf("Course Credits: %d\n", course.getCredits());
             System.out.println("Prerequisites: " + course.getPrereq());
             System.out.println("Course Max enrollment : "+course.getLimit());
+            System.out.println("Course Timings : "+course.getTimings());
         } 
         else 
         {

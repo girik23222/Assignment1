@@ -5,7 +5,6 @@ public abstract class User {
     private String name;
 
     public User(String email, String password, String name) {
-        System.out.println("User: " + email + " " + password);
         this.email = email;
         this.password = password;
         this.name = name;
