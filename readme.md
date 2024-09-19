@@ -18,6 +18,7 @@ The University Course Management System is a comprehensive application designed 
 2. **Course Addition**: When adding a new course, the system does not check whether the assigned professor already exists in the system.
 3. **Professor**: One professor gets only one course assigned
 4. **Grade**: Grade taken as integer(1-10)
+5. **Admin**: While adding course, admin assigns a professor
 
 ## Features
 
@@ -97,11 +98,3 @@ In the development of this system, several Object-Oriented Programming (OOP) con
 - **`DataManager.java`**: A singleton class responsible for managing data related to users, courses, and authentication. It provides methods for signing up users, logging in, and managing course and user data.
 
 - **`Main.java`**: The entry point of the application. It provides the user interface for logging in, signing up, and accessing different functionalities based on user roles.
-
-## Getting Started
-
-To get started with the University Course Management System:
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yourusername/university-course-management-system.git
