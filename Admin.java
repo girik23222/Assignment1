@@ -1,7 +1,8 @@
 package Model;
-// import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 
 import Model.*;
@@ -12,6 +13,7 @@ public class Admin extends User {
     private List<Course> courseList;
     public Map<String, Student> studentList ;
     public Scanner scaner = new Scanner(System.in);
+
     // Constructor
     public Admin(String email, String password, String name, DataManager dataManager) {
         super(email, password, name);
@@ -31,7 +33,7 @@ public class Admin extends User {
                 return;
             }
             if(c.getprof().equals((prof))){
-                System.out.println("Professor " + prof +" is assigned to " + c.getCode());
+                System.out.println("Professor " + prof +" is already assigned to " + c.getCode());
                 return;
             }
         }
@@ -89,6 +91,7 @@ public class Admin extends User {
             }
         }
     }
+
     public void updateComplaintStatus() {
         if (studentList.isEmpty()) {
             System.out.println("No students found.");
@@ -151,7 +154,7 @@ public class Admin extends User {
         Student studentToUpdate = null;
 
         // Loop through the list of students to find the student with the matching roll number
-        for (Student student : studentList.values()) { // assuming studentList is a Map<String, Student>
+        for (Student student : studentList.values()) {
             if (student.getID() == rollNum) {
                 studentToUpdate = student;
                 break;
@@ -182,7 +185,7 @@ public class Admin extends User {
 
         Student studentToRemove = null;
 
-        // Loop through the list of students to find the student with the matching roll number
+
         for (Student student : studentList.values()) {
             if (student.getID() == rollNum) {
                 studentToRemove = student;

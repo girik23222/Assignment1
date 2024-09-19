@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-//implementation of ID
-//implementation of viewProfessor
+
 
 public class Student extends User{ //Inheritance
     private int semester;
@@ -124,15 +123,7 @@ public class Student extends User{ //Inheritance
 
     public double Cgpa()
     {
-        // This method will calculate the CGPA of the student based on the completed courses
-//        double totalGrades = this.getGrades();
-//        int   totalCredits = this.getCredits();
-//
-//
-//        if (totalCredits==0) {
-//            System.out.println("There are no Course Credits!");
-//            return 0;
-//        }
+
         double cgpa = 0;
         for (int i = 1;i<=this.semester;i++){
             cgpa+=this.Sgpa(i);
@@ -183,7 +174,7 @@ public class Student extends User{ //Inheritance
             }
         }
     }
-// See this part -----> TODO
+
     public void viewAvailableCourses()
     {
         // This method will display the details of the all courses of the student
@@ -270,14 +261,8 @@ public class Student extends User{ //Inheritance
             System.out.println();
         }
     }
-    
     public void trackProgress(int semester)
     {
-        // This method will display the progress of the student for a specific semester
-//        if (semester>=this.semester)
-//        {
-//            System.out.println("Grades not received for this semester yet.");
-//        }
         viewGrades(semester);
         System.out.println("SGPA of Student " + this.getName() + " is " + this.Sgpa(semester));
     }

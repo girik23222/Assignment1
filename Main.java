@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         boolean start = true;
 
-        // Seed some initial data if required (this can be modified as per need)
+        // Seed some initial data if required
         Admin admin = new Admin("a", "a", "Admin", dataManager);
         dataManager.signUp(admin);
 

@@ -115,7 +115,7 @@ public class DataManager {
         return new ArrayList<>(); // Empty list if type doesn't match
     }
 
-    // List all registered users for debugging or admin purposes
+
     public void listRegisteredUsers() {
         for (String email : userCredentials.keySet()) {
             User user = getUserByEmail(email);

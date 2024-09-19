@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-// import Model.Student;
+
 
 public class Course {
     private String title;
@@ -14,13 +14,11 @@ public class Course {
     private int credits;
     private List<Course> prereq;  // List of prerequisite courses
     private List<Student> enrolled;
-//    private List<Schedule> schedule;
+
     private Map<Student, Integer> studentGrades;  // Mapping between student and their grade
     private int limit;
     private String location;
     private String timings;
-//     private int startTime;
-//     private int endTime;
 
     // Constructor
     public Course(String title, String code, String prof, int sem, int credits, List<Course> prereq,String timings,String location) {
@@ -34,9 +32,8 @@ public class Course {
         this.location  = location ;
         this.studentGrades = new HashMap<>();
         this.timings = timings;
-        this.limit = 60; // Default maximum enrollments, can be updated later
-        // this.startTime = 0000; // Default start time, can be updated later
-        // this.endTime = 0001; // Default end time, can be updated later
+        this.limit = 60; // Default maximum enrollments,
+
     }
 
     // Getters and Setters
@@ -58,7 +55,7 @@ public class Course {
     public String getprof() {
         return prof;
     }
-
+    public void setprof(String prof){this.prof = prof;}
     public int getSem() {
         return sem;
     }
@@ -98,13 +95,6 @@ public class Course {
         enrolled.remove(student);
     }
 
-//    public List<Schedule> getschedule() {
-//        return schedule;
-//    }
-//
-//    public void setschedule(List<Schedule> schedule) {
-//        this.schedule = schedule;
-//    }
 
 
 
