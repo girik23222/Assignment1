@@ -6,7 +6,7 @@ import Model.*;
 public class Prof extends User
 {
     private Course course = null;
-
+    private static DataManager dataManager = DataManager.getInstance();
     
 
     public Prof(String email, String password, String name, Course course)
@@ -41,11 +41,11 @@ public class Prof extends User
         {
             System.out.println("Invalid grade");
         }
-        if (course.getStudents().contains(student)) 
+        if (student.isEnrolled(course.getCode()))
         {
             course.setGrade(student, grade);
             System.out.println("Grade " + grade + " assigned to student " + student.getName() + " for course " + course.getTitle());
-
+            student.completed.add(course);
             // if all currentCourses of student are graded, student completed the semester
             for(Course c: student.getCurrent())
             {
@@ -56,7 +56,6 @@ public class Prof extends User
             }
             student.setSemester(student.getSemester()+1);
             // System.out.println("Student " + student.getName() + " has completed semester " + student.getSem() + " for course " + course.getTitle());
-            student.completedSemester();
         } 
 
         else 
@@ -114,24 +113,24 @@ public class Prof extends User
     }
 
     // View enrolled students
-    public void viewEnrolledStudents() {
-        if (course != null) {
-            System.out.println("Students enrolled in course " + this.course.getCode() + ":");
+    public void viewEnrolledStudents(String code) {
+        if (code != null) {
+            System.out.println("Students enrolled in course " + code + ":");
             System.out.println();
-
+            boolean one = false;
+            int i = 1;
             // Get the list of students enrolled in the course
-            List<Student> students = this.course.getStudents();
-
-            if (students != null && !students.isEmpty()) {
-                for (Student student : students) {
-                    // Print student details, assuming there's a method to get the student name or ID
-                    System.out.println("ID: " + student.getID() + ", Name: " + student.getName());
+            for (Student s : dataManager.getAllUsers(Student.class)) {
+                if (s.isEnrolled(code)) {
+                    System.out.println("Student "+ i + ": Roll No.: " + s.getID() + " Name: "+ s.getName() + ", Email: "+s.getEmail());
+                    i++;
+                    one = true;
                 }
-            } else {
-                System.out.println("No students are currently enrolled in this course.");
             }
-        } else {
-            System.out.println("No course assigned.");
+            if(!one)
+            {
+                System.out.println("No student Enrolled in this course");
+            }
         }
     }
 

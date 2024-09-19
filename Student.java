@@ -11,7 +11,7 @@ import java.util.List;
 public class Student extends User{ //Inheritance
     private int semester;
     private int ID;
-    private List<Course> completed;
+    public List<Course> completed;
     private List<Course> current;
     public List<List<String>> complaints;
 
@@ -31,7 +31,18 @@ public class Student extends User{ //Inheritance
         complaints.add(complaint);   // Add the complaint to the complaints list
         System.out.println("Complaint Registered Successfully");
     }
-
+    // isEnrolled
+    public boolean isEnrolled(String code)
+    {
+        boolean found = false;
+        for (Course course : current) {
+            if (course.getCode().equals(code)) {
+                found = true;
+                return found;
+            }
+        }
+        return found;
+    }
     // Method to view all complaints
     public void viewComplaints() {
         if (complaints.isEmpty()) {
@@ -114,21 +125,26 @@ public class Student extends User{ //Inheritance
     public double Cgpa()
     {
         // This method will calculate the CGPA of the student based on the completed courses
-        double totalGrades = this.getGrades();
-        int   totalCredits = this.getCredits();
-
-        if (totalCredits==0) {
-            System.out.println("There are no Course Credits!");
-            return 0;
+//        double totalGrades = this.getGrades();
+//        int   totalCredits = this.getCredits();
+//
+//
+//        if (totalCredits==0) {
+//            System.out.println("There are no Course Credits!");
+//            return 0;
+//        }
+        double cgpa = 0;
+        for (int i = 1;i<=this.semester;i++){
+            cgpa+=this.Sgpa(i);
         }
 
-        return totalGrades/totalCredits;
+        return cgpa/this.semester;
     }
 
     public double Sgpa(int semester)
     {
         // This method will calculate the SGPA of the student based on the completed courses of the last semester
-        if (semester>=this.semester) 
+        if (semester>this.semester)
         {
             System.out.println("Grades not received .");
             return 0;
@@ -136,7 +152,7 @@ public class Student extends User{ //Inheritance
         
         double totalGrades = this.getGrades(semester);
         int   totalCredits = this.getCredits(semester);
-
+        if(totalGrades == 0)return 0.0;
         return totalGrades/totalCredits;
     }
 
@@ -221,7 +237,7 @@ public class Student extends User{ //Inheritance
     public void viewGrades(int semester)
     {
         // This method will display the grades of the student for a specific semester
-        if (semester>=this.semester) 
+        if (semester>this.semester)
         {
             System.out.println("Grades not received .");
             return;

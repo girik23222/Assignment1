@@ -43,20 +43,21 @@ public class Main {
         dataManager.signUp(professor3);
 
         while (start) {
+
             System.out.println("===== Welcome to ERP =====");
             System.out.println("1. Login");
             System.out.println("2. Sign Up");
             System.out.println("3. Exit");
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
+            String choice = scanner.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     loginUser();
                     break;
-                case 2:
+                case "2":
                     signUpUser();
                     break;
-                case 3:
+                case "3":
                     System.out.println("Exiting the system. Goodbye!");
                     start = false;
                     break;
@@ -227,7 +228,7 @@ public class Main {
                     break;
                 case 3:
 
-                    professor.viewEnrolledStudents();
+                    professor.viewEnrolledStudents(professor.getCourse().getCode());
                     break;
                 case 4:
                     assignGrade(professor);
@@ -260,7 +261,7 @@ public class Main {
             System.out.println("9. View Complaints");
             System.out.println("10. Update Complaints");
             System.out.println("11. Logout");
-            
+
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -362,4 +363,5 @@ public class Main {
         int grade = scanner.nextInt();
         professor.assignGrade(student, grade);
     }
+
 }

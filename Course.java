@@ -118,7 +118,7 @@ public class Course {
 
     // Grade management
     public void setGrade(Student student, int grade) {
-        if (enrolled.contains(student)) {
+        if (student.isEnrolled(getCode())) {
             if (grade <= 10 && grade >= 3) {
                 studentGrades.put(student, grade);
                 System.out.println("Grade updated for " + student.getName() + ": " + grade);
