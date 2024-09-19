@@ -16,6 +16,8 @@ The University Course Management System is a comprehensive application designed 
 
 1. **Location Change**: Only administrators have the authority to change the location of a course.
 2. **Course Addition**: When adding a new course, the system does not check whether the assigned professor already exists in the system.
+3. **Professor**: One professor gets only one course assigned
+4. **Grade**: Grade taken as integer(1-10)
 
 ## Features
 
